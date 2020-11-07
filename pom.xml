@@ -14,10 +14,11 @@
         <module>bom</module>
         <module>betmodel</module>
         <module>stateless</module>
-        <module>producer</module>
         <module>counting</module>
         <module>tables</module>
         <module>windows</module>
+        <module>producer</module>
+        <module>homework</module>
     </modules>
 
     <organization>
