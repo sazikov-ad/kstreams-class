@@ -74,9 +74,9 @@ public class TopologyConfiguration {
             JoinWindows.of(Duration.ofSeconds(1))
                 .before(Duration.ZERO),
             StreamJoined
-                .with(Serdes.String(), new JsonSerde<>(Bet.class), new JsonSerde<>(Bet.class)))
-            .filter((k, v) -> v.getLag() <= 1)
-            .map((k, v) -> KeyValue.pair(v.getBettor(), v));
+                .with(Serdes.String(), new JsonSerde<>(Bet.class),
+                    new JsonSerde<>(Bet.class)))
+            .selectKey((k, v) -> v.getBettor());
 
     user_bets.toStream()
         .to(USER_BET_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
